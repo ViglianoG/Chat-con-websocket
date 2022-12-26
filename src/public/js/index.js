@@ -1,13 +1,13 @@
 let socket = io();
 let user = "";
-let chatbox = document.getElementById("chatbox");
+let chatBox = document.getElementById("chatbox");
 
 Swal.fire({
   title: "autentification",
   input: "text",
   text: "set username for the Ashe's chat",
   inputValidator: (value) => {
-    return !value.trin() && "Please write a username!";
+    return !value.trim() && "Please write a username!";
   },
   allowOutsideClick: false,
 }).then((result) => {
@@ -17,7 +17,7 @@ Swal.fire({
 
 chatBox.addEventListener("keyup", (event) => {
   if (event.key === "Enter") {
-    if (chatBox.value.trin().length > 0) {
+    if (chatBox.value.trim().length > 0) {
       socket.emit("message", {
         user,
         message: chatBox.value,
